@@ -1,16 +1,16 @@
 <template>
   <ul>
-    <li :class="{ active: activeOption === 'poor' }">
+    <li :class="{ active: modelValue === 'poor' }">
       <button type="button" @click="activate('poor')">
         Poor
       </button>
     </li>
-    <li :class="{ active: activeOption === 'average' }">
+    <li :class="{ active: modelValue === 'average' }">
       <button type="button" @click="activate('average')">
         Average
       </button>
     </li>
-    <li :class="{ active: activeOption === 'great' }">
+    <li :class="{ active: modelValue === 'great' }">
       <button type="button" @click="activate('great')">
         Great
       </button>
@@ -22,21 +22,8 @@
 export default {
   props: ['modelValue'], // vuejs made this prop
   emits: ['update:modelValue'], // vuejs emit this event when use v-model on custom component
-  /*
-  data() {
-    return {
-      activeOption: this.modelValue // this will not reset the value from outside
-    };
-  },
-  */
-  computed: {
-    activeOption() {
-      return this.modelValue;
-    }
-  },
   methods: {
     activate(option) {
-      this.activeOption = option;
       this.$emit('update:modelValue', option);
     }
   }
