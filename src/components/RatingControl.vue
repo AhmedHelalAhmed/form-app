@@ -22,14 +22,18 @@
 export default {
   props: ['modelValue'], // vuejs made this prop
   emits: ['update:modelValue'], // vuejs emit this event when use v-model on custom component
-  
+  /*
   data() {
     return {
       activeOption: this.modelValue // this will not reset the value from outside
     };
   },
-  
-
+  */
+  computed: {
+    activeOption() {
+      return this.modelValue;
+    }
+  },
   methods: {
     activate(option) {
       this.activeOption = option;
